@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>Pet Store</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--BOOTSTRAP 4-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!--FONTS-->
+        <link href="https://fonts.googleapis.com/css?family=Englebert&display=swap" rel="stylesheet">
+    <!--STYLESHEETS-->
+        <link rel="stylesheet" href="styles/login_signup.css">
+    <!--ICONS-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+              <h4 class="card-title mt-3 text-center">Create Account</h4>
+                <form action="customerHandler?action=customerSignup" Method="POST">
+                    <div class="form-group input-group" id="name_input">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-user"></i>
+                            </span>
+                        </div>
+                        <input name="FirstName" class="form-control" placeholder="First Name" required autofocus type="text">
+                    </div>
+                    <div class="form-group input-group" id="name_input">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-user"></i>
+                            </span>
+                        </div>
+                        <input name="LastName" class="form-control" placeholder="Last Name" required autofocus type="text">
+                    </div>
+                    <div class="form-group input-group" id="email_input">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-envelope"></i>
+                            </span>
+                        </div>
+                        <input name="Email" class="form-control" placeholder="Email address" type="email">
+                    </div> 
+                    <div class="form-group input-group" id="name_input">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-address-card"></i>
+                            </span>
+                        </div>
+                        <input name="Address" class="form-control" placeholder="Address" required autofocus type="text">
+                    </div>
+                    <div class="form-group input-group" id="pass_input">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                        </div>
+                        <input name="Password" class="form-control" placeholder="Create password" type="password">
+                    </div>
+                    <!-- form-group// -->
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-secondary btn-block"> Create Account  </button>
+                    </div> <!-- form-group// -->      
+                    <p class="text-center">Have an account?
+                        <a href="customer_login.html">Log In</a>
+                    </p>
+                </form>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    
+    </body>
+</html>
+
+
+ 

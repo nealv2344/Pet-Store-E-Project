@@ -1,0 +1,435 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Englebert', sans-serif;
+}
+.row {
+  margin: 8px -16px;
+}
+/*Links*/
+.content a:link {
+    color: #000000;
+}
+.content a:visited{
+     color: #000000;
+}
+.content a:hover {
+    text-decoration: none;
+    color: green;  
+}
+.content a:active {
+    color: #000000;
+}
+.content h3:hover {
+    text-decoration: none;
+    color: #4d4d4d;
+}
+.content:hover {
+    border: 2px solid #c6c6c6;
+}
+.nav .nav-item a:link {
+    color: #000000;
+}
+.nav .nav-item a:hover {
+    color: rgba(0, 0, 0, 0.43);
+    background-color: rgba(204, 204, 204, 0.42);
+}
+.nav .nav-item a:active {
+    color: #000000;
+}
+
+
+/*Jumbotron*/
+.jumbotron .container-fluid h1 {
+    font-size: 7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-shadow: 10px 10px 30px rgba(0, 0, 0, 0.85);
+    letter-spacing: 15px;
+    font-weight: bold;  
+}
+ .logo-img{
+    width: 250px;
+}
+
+
+/*Nav Bar*/
+.navbar .navbar-nav {
+    margin-left: auto;
+    margin-right: auto;
+}
+.navbar .navbar-collapse {
+  text-align: center; 
+}
+.navbar a {
+    font-size: 20px;
+}
+
+/*Nav Pet Links*/
+.nav {
+    margin-top: 20px;
+}
+
+
+
+/*PRODUCT IMG MODAL*/
+#product-img {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    margin: auto;
+}
+#product-img:hover {
+    opacity: 0.7;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+/* Modal Content (image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+/* Caption of Modal Image */
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+/* Add Animation */
+.modal-content, #caption {  
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(0)} 
+  to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+  from {transform:scale(0)} 
+  to {transform:scale(1)}
+}
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 70px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
+}
+
+
+
+
+
+
+/*Pet Page Category Headers*/
+.col-sm-12 h1{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    color: white;
+    text-shadow: 10px 10px 30px rgba(0, 0, 0, 0.85);
+    font-size: 60px;
+}
+#dog-food {
+    margin-top: 90px;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #e6e6e6;
+    padding-bottom: 25px;  
+}
+#dog-treats {
+    margin-top: 70px;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #e6e6e6;
+    padding-bottom: 25px;  
+}
+#dog-toys {
+    margin-top: 70px;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #e6e6e6;
+    padding-bottom: 25px;  
+}
+#dog-accessories {
+    margin-top: 70px;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #e6e6e6;
+    padding-bottom: 25px;  
+}
+#fish-food{
+    margin-top: 90px;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #e6e6e6;
+    padding-bottom: 25px;
+}
+#fish-tanks {
+    margin-top: 70px;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #e6e6e6;
+    padding-bottom: 25px;  
+}
+#fish-accessories {
+    margin-top: 70px;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #e6e6e6;
+    padding-bottom: 25px;  
+}
+#bird-food {
+    margin-top: 90px;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #e6e6e6;
+    padding-bottom: 25px;  
+}
+#bird-cages {
+    margin-top: 70px;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #e6e6e6;
+    padding-bottom: 25px;  
+}
+#bird-accessories {
+    margin-top: 70px;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #e6e6e6;
+    padding-bottom: 25px;  
+}
+#cat-food {
+    margin-top: 90px;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #e6e6e6;
+    padding-bottom: 25px;  
+}
+#cat-treats {
+    margin-top: 70px;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #e6e6e6;
+    padding-bottom: 25px;  
+}
+#cat-toys {
+    margin-top: 70px;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #e6e6e6;
+    padding-bottom: 25px;  
+}
+#cat-accessories {
+    margin-top: 70px;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #e6e6e6;
+    padding-bottom: 25px;  
+}
+#reptile-tanks {
+    margin-top: 70px;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #e6e6e6;
+    padding-bottom: 25px;  
+}
+#snake-food {
+    margin-top: 90px;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #e6e6e6;
+    padding-bottom: 25px;  
+}
+#lizard-food {
+    margin-top: 70px;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #e6e6e6;
+    padding-bottom: 25px;  
+}
+#reptile-accessories {
+    margin-top: 70px;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #e6e6e6;
+    padding-bottom: 25px;  
+}
+#hamster-food {
+    margin-top: 90px;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #e6e6e6;
+    padding-bottom: 25px;  
+}
+
+/*Pet Page Rows*/
+#food-row-one {
+    justify-content: center;
+}
+#food-row-two {
+    justify-content: center;
+}
+#treats-row-one {
+    justify-content: center;
+}
+#treats-row-two {
+    justify-content: center;
+}
+#toys-row-one {
+    justify-content: center;
+}
+#toys-row-two {
+    justify-content: center;
+}
+#accessories-row-one {
+    justify-content: center;
+}
+#accessories-row-two {
+    justify-content: center;
+}
+#tanks-row-one {
+    justify-content: center;
+}
+#tanks-row-two {
+    justify-content: center;
+}
+#cages-row-one {
+    justify-content: center;
+}
+#cages-row-two {
+    justify-content: center;
+}
+    /* Add padding BETWEEN each column */
+    .row,
+    .row > .column {
+      padding: 20px; 
+    }
+    /* Create three equal columns that floats next to each other */
+    .column {
+      width: 33%;
+    }
+    /* Clear floats after rows */ 
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    /* Content */
+    .content {
+      background-color: white;
+      padding: 10px;
+        box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.54);
+        
+    }
+    .content h3 {
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+        color: #898989;
+        font-weight: 400;
+        text-decoration: none;
+        margin-top: 10px;
+        padding-bottom: 5px;
+        border-top: 1.5px solid #898989;
+        border-bottom: 1.5px solid #898989;
+    }
+    .content h6{
+       font-family: sans-serif; 
+    }
+    .content p {
+        font-family: sans-serif;
+    }
+    .content button {
+        border: none;
+        background-color: white;
+        font-family: sans-serif;
+    }
+
+
+
+
+
+/*Scroll to Top Button*/
+#btn-scroll-top {
+    display: none; /* Hidden by default */
+    position: fixed; 
+    bottom: 20px; 
+    z-index: 99; /* Make sure it does not overlap */
+    border: none;
+    outline: none; 
+    background-color: #e3dfdf;
+    color: #000000; 
+    cursor: pointer; 
+    padding: 15px; 
+    border-radius: 10px; 
+    font-size: 18px; 
+}
+#scroll-btn-row {
+    margin: auto;
+    justify-content: center;
+    margin-top: 70px;
+}
+
+
+
+
+
+@media screen and (max-width: 900px) {
+  .column {
+    width: 33%; /* Responsive layout - makes a two column-layout instead of four columns */
+  }
+    .content h3 {
+        text-align: center;
+    }
+    #hamster {
+        font-size: 21px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .jumbotron .container-fluid h1 {
+        margin: auto;
+        display:list-item;
+        text-align: center;
+    }
+    .navbar {
+         box-shadow: 0px 0px 0px;
+    }
+    .column {
+    width: 100%; /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+  }
+    #hamster {
+        font-size: 29px;
+    }
+}
+
+
+
+
