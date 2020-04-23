@@ -34,186 +34,47 @@ public class adminHandler extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        //url for admin page
-        String adminPage = "AdminPage.jsp";
-        //urls for form handling
-        String orderContents = "aFormResults/orderLookup.jsp";
-        String cancelOrder = "aFormResults/cancelOrder.jsp";
-        String productInfo = "aFormResults/productInfo.jsp";
-        String addProduct = "aFormResults/addProduct.jsp";
-        String deleteProduct = "aFormResults/deleteProduct.jsp";
-        String deleteCustomer = "aFormResults/deleteCustomer.jsp";
-        String addAdmin = "aFormResults/addAdmin.jsp";
-        String deleteAdmin = "aFormResults/deleteAdmin.jsp";
-        
-        String redirect = "";
+
+         //gets action attribute from adminPage
+        String action = request.getParameter("action");
         
         try (PrintWriter out = response.getWriter()) {
                        
             
-            //gets action attribute from adminPage
-            String action = request.getParameter("action");
-            
-            if(action.equalsIgnoreCase("adminLogin")){
-                //#1-get id/password from html file
-                String id = request.getParameter("inputId");
-                String pw = request.getParameter("inputPassword");
-                boolean result = checkAdmin(id,pw);
-                
-                if(result == true){
-                    //#3-create new object
-                    Administrator a1 = new Administrator();
-                    a1.selectDB(id);
-
-                    //#4-make any decisions
-
-                    //#5-put object into session
-                    request.setAttribute("a1",a1);
-                    System.out.println("Administrator added to session");
-                    //#6-use requestDispatcher to forward onto next page  
-                    redirect = adminPage;
-                }else{
+            switch(action){
+                case("adminLogin"):
+                    adminLogin(request,response);
+                    break;
+                case("orderLookup"):
+                    orderLookup(request,response);
+                    break;
+                case("cancelOrder"):
                     
-                }
-                
-                
-            }else if(action.equalsIgnoreCase("orderLookup")){
-                //gets order number from adminPage 
-                String oNum = request.getParameter("orderNum"); 
-                int orderNum = Integer.parseInt(oNum);
-                boolean result = checkOrderNum(orderNum);                
-                
-                if(result ==true){
-                Order o1 = new Order();
-                o1.selectDB(orderNum);
-                o1.retrieveOrderContentsDB();
-
-                OrderHistory oH = new OrderHistory();    
-                oH.retrieveOrdersDB(o1.getCustID());
-                
-                request.setAttribute("o1",o1.items.items);
-                request.setAttribute("oH",oH.orders);
-                
-                redirect = orderContents;
-            }else{
-                System.out.println("ordernumber does not exit");
-            }
-            } else if(action.equalsIgnoreCase("cancelOrder")){
-                
-                
-                
-                
-                //cancel order goes here
-                //if validated, not allowed to cancel
-                //otherwise, proceed to cancel
-                
-                
-                
-                
-                
-            } else if(action.equalsIgnoreCase("productInfo")){
-                //gets product sku from adminPage
-                String productSku = request.getParameter("productSku");
-                int pSku = Integer.parseInt(productSku);
-                
-                Product p1 = new Product();
-                p1.selectDB(pSku);
-                
-                request.setAttribute("p1",p1);
-                System.out.println("Displaying product info for sku"+p1.getName());
-                
-                redirect= productInfo;
-                
-            } else if(action.equalsIgnoreCase("addProduct")){
-                //string to int conversion
-                String productSku = request.getParameter("productSku");
-                int pSku = Integer.parseInt(productSku);
-                
-                String pName = request.getParameter("productName");
-                //string to double conversiion
-                String tempPrice = request.getParameter("productPrice");
-                double pPrice = Double.parseDouble(tempPrice);
-                //string to integer conversion
-                String tempStock = request.getParameter("productStock");
-                int pStock = Integer.parseInt(tempStock);
-                //db access
-                Product p1 = new Product();
-                p1.insertDB(pSku, pName, pPrice, pStock);
-                request.setAttribute("p1", p1);
-                System.out.println("Product"+p1.getName()+"added successfully");
-                //sets url path
-                redirect = addProduct;
-                
-            } else if(action.equalsIgnoreCase("deleteProduct")){
-                //gets product sku from adminPage
-                String productSku = request.getParameter("productSku");
-                int pSku = Integer.parseInt(productSku);
-                //db access
-                Product p1 = new Product();
-                p1.selectDB(pSku);
-                p1.deleteDB();
-                //sets url path
-                redirect = deleteProduct;
-                
-            } else if(action.equalsIgnoreCase("deleteCustomer")){
-                //gets customer id from adminPage
-                String custId = request.getParameter("customerId");
-                
-                Customer c1 = new Customer();
-                c1.selectDB(custId);
-                c1.deleteDB();
-                
-                redirect = deleteCustomer;
-            } else if(action.equalsIgnoreCase("customerHistory")){
-                //gets customer id from adminPage
-                String custId = request.getParameter("customerId");
-                
-                
-                
-                //customer history
-                //should display table
-                //--orders--orderContents--Total--
-                
-                
-                
-                
-                
-            } else if(action.equalsIgnoreCase("addAdmin")){
-                String adminId = request.getParameter("adminId");
-                String fName = request.getParameter("fName");
-                String lName = request.getParameter("lName");
-                String address = request.getParameter("address");
-                String password = request.getParameter("password");
-                String email = "";
-                
-                Administrator a1 = new Administrator(adminId,fName,lName,address,password,email);
-                a1.insertDB();
-                a1.display();
-                request.setAttribute("a1",a1);
-                
-                System.out.println("Admin "+a1.getFname()+" successfully Added");
-                
-                redirect = addAdmin;
-                
-            } else if(action.equalsIgnoreCase("deleteAdmin")){
-                String adminId = request.getParameter("adminId");
-                
-                Administrator a1 = new Administrator();
-                a1.selectDB(adminId);
-                a1.deleteDB();
-                
-                redirect = deleteAdmin;
-            }
-            
-            RequestDispatcher rd = request.getRequestDispatcher(redirect);
-                rd.forward(request, response);
-                        
+                    break;
+                case("productInfo"):
+                    productInfo(request,response);
+                    break;
+                case("addProduct"):
+                    addProduct(request,response);
+                    break;
+                case("deleteProduct"):
+                    deleteProduct(request,response);
+                    break;
+                case("deleteCustomer"):
+                    deleteCustomer(request,response);
+                    break;
+                case("customerHistory"):
+                    
+                    break;
+                case("addAdmin"):    
+                    addAdmin(request,response);
+                    break;
+                case("deleteAdmin"):
+                    deleteAdmin(request,response);
+                    break;
+            }                      
         }
-    }
-    
-    
-    
+    }  
     //validation method for order number
     protected boolean checkOrderNum(int orderNum){
         int validate = 0;
@@ -314,5 +175,171 @@ public class adminHandler extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+    
+     protected void adminLogin(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+            
+                //#1-get id/password from html file
+                String id = request.getParameter("inputId");
+                String pw = request.getParameter("inputPassword");
+                boolean result = checkAdmin(id,pw);
+                
+                if(result == true){
+                    //#3-create new object
+                    Administrator a1 = new Administrator();
+                    a1.selectDB(id);
 
+                    //#4-make any decisions
+
+                    //#5-put object into session
+                    request.setAttribute("a1",a1);
+                    System.out.println("Administrator added to session");
+                    //#6-use requestDispatcher to forward onto next page  
+                    RequestDispatcher rd = request.getRequestDispatcher("AdminPage.jsp");
+                    rd.forward(request, response);
+                }else{
+                    //login error page needed
+                }
+     }
+     
+     protected void orderLookup(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+         
+         //gets order number from adminPage 
+                String oNum = request.getParameter("orderNum"); 
+                int orderNum = Integer.parseInt(oNum);
+                boolean result = checkOrderNum(orderNum);                
+                
+                if(result ==true){
+                Order o1 = new Order();
+                o1.selectDB(orderNum);
+                o1.retrieveOrderContentsDB();
+
+                OrderHistory oH = new OrderHistory();    
+                oH.retrieveOrdersDB(o1.getCustID());
+                
+                request.setAttribute("o1",o1.items.items);
+                request.setAttribute("oH",oH.orders);
+                
+                RequestDispatcher rd = request.getRequestDispatcher("aFormResults/orderLookup.jsp");
+                rd.forward(request, response);
+            }else{
+                System.out.println("ordernumber does not exit");
+            }
+     }
+     
+     protected void cancelOrder(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+         //cancel order stuff goes in here
+     } 
+     
+     protected void productInfo(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException{
+         
+                //gets product sku from adminPage
+                String productSku = request.getParameter("productSku");
+                int pSku = Integer.parseInt(productSku);
+                
+                Product p1 = new Product();
+                p1.selectDB(pSku);
+                
+                request.setAttribute("p1",p1);
+                System.out.println("Displaying product info for sku"+p1.getName());
+                
+                RequestDispatcher rd = request.getRequestDispatcher("aFormResults/productInfo.jsp");
+                rd.forward(request, response);
+         
+     }
+     
+     protected void addProduct(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException{
+         
+                //string to int conversion
+                String productSku = request.getParameter("productSku");
+                int pSku = Integer.parseInt(productSku);
+                
+                String pName = request.getParameter("productName");
+                //string to double conversiion
+                String tempPrice = request.getParameter("productPrice");
+                double pPrice = Double.parseDouble(tempPrice);
+                //string to integer conversion
+                String tempStock = request.getParameter("productStock");
+                int pStock = Integer.parseInt(tempStock);
+                //db access
+                Product p1 = new Product();
+                p1.insertDB(pSku, pName, pPrice, pStock);
+                request.setAttribute("p1", p1);
+                System.out.println("Product"+p1.getName()+"added successfully");
+                //sets url path
+                RequestDispatcher rd = request.getRequestDispatcher("aFormResults/addProduct.jsp");
+                rd.forward(request, response);
+         
+     }
+
+     protected void deleteProduct(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+                //gets product sku from adminPage
+                String productSku = request.getParameter("productSku");
+                int pSku = Integer.parseInt(productSku);
+                //db access
+                Product p1 = new Product();
+                p1.selectDB(pSku);
+                p1.deleteDB();
+                //sets url path
+                RequestDispatcher rd = request.getRequestDispatcher("aFormResults/deleteProduct.jsp");
+                rd.forward(request, response);
+     }
+     
+     protected void deleteCustomer(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException{
+                //gets customer id from adminPage
+                String custId = request.getParameter("customerId");
+                
+                Customer c1 = new Customer();
+                c1.selectDB(custId);
+                c1.deleteDB();
+                
+                RequestDispatcher rd = request.getRequestDispatcher("aFormResults/deleteCustomer.jsp");
+                rd.forward(request, response);
+     }
+
+     protected void customerHistory(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+            //customer history goes here
+     }
+
+     protected void addAdmin(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+         
+                String adminId = request.getParameter("adminId");
+                String fName = request.getParameter("fName");
+                String lName = request.getParameter("lName");
+                String address = request.getParameter("address");
+                String password = request.getParameter("password");
+                String email = "";
+                
+                Administrator a1 = new Administrator(adminId,fName,lName,address,password,email);
+                a1.insertDB();
+                a1.display();
+                request.setAttribute("a1",a1);
+                
+                System.out.println("Admin "+a1.getFname()+" successfully Added");
+                
+                RequestDispatcher rd = request.getRequestDispatcher("aFormResults/addAdmin.jsp");
+                rd.forward(request, response);
+     }
+
+     protected void deleteAdmin(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+         
+                String adminId = request.getParameter("adminId");
+                
+                Administrator a1 = new Administrator();
+                a1.selectDB(adminId);
+                a1.deleteDB();
+                
+                RequestDispatcher rd = request.getRequestDispatcher("aFormResults/deleteAdmin.jsp");
+                rd.forward(request, response);
+     }
+    
 }

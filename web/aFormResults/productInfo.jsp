@@ -1,7 +1,8 @@
 <%-- 
-    Document   : productInfo
-    Created on : Apr 3, 2020, 1:43:56 PM
-    Author     : Neal Valdez
+    Document   : NewAdminPage
+    Created on : Mar 7, 2020, 7:00:42 PM
+    Edited on:April 16 2020 6:28pm
+    Author     : Neal Valdez,Rachel Perry
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="businessObjs.Administrator"%>
@@ -24,6 +25,10 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     
         <style>
+            
+            h1{
+                color: white;
+            }
         #header-nav {
             border-bottom: 2px solid #e6e6e6;
             padding-bottom: 50px;
@@ -111,124 +116,30 @@
                 </nav>
         </div>
         </div>
-        <div class="row" id="admin-header">
-            <div class="col-sm-12">
-                <h1>Orders</h1>
-            </div>
-        </div>
-        <div class="row" id="order-lookup">
-            <form id="order-lookup-form" action="adminHandler?action=orderLookup" method="POST">
-            <label>Look up Order:</label>
-            <input type="text" name="orderNum"id="lookupOrder" placeholder="order num">
-            <input type="submit" name="submit" id="submit" value="Lookup">
-          </form>
-        </div>   
-        
-        <div class="row" id="cancelOrder">
-            <form id="order-lookup-form" action="adminHandler?action=candelOrder" method="POST">
-            <label>Cancel Order:</label>
-            <input type="text" name="cancelOrder"id="cancelOrder" placeholder="order num">
-            <input type="submit" name="submit" id="submit" value="Cancel">
-          </form>
-        </div>
         
         <div class="row" id="admin-header">
-            <div class="col-sm-12">
-                <h1>Products</h1>
+            <div class="col-3">
+                <h1 style="font-weight:bold">Products</h1>
             </div>
         </div>
         
-        <div class="row" id="Product">
-            <form id="order-lookup-form" action="adminHandler?action=productInfo" method="POST">
-            <label>Product Info:</label>
-            <input type="text" name="productSku"id="productInfo" placeholder="sku number">
-            <input type="submit" name="submit" id="submit" value="Lookup">
-          </form>
-        </div>
-        
-        <div class="row" id="order-table-div">
-          <table id="order-table">
-            <tr>
-              <th>Name</th>
-              <th>Price</th>
-              <th>LeftInStock</th>              
-            </tr>
-            
-            <tr>
-                <th>${p1.getName()}</th>
-                <th>${p1.getPrice()}</th>
-                <th>${p1.getStock()}</th>
-            </tr>
-            
-          </table>
-        </div>
-        
-        <div class="row" id="addProduct">
-            <form id="order-lookup-form" action="adminHandler?action=addProduct" method="POST">
-                <label>Add new Product:</label><br>
-            <input type="text" name="productSku"id="productSku" placeholder="number"><br>
-            <input type="text" name="productName"id="productName" placeholder="name"><br>
-            <input type="text" name="productPrice"id="productPrice" placeholder="price"><br>
-            <input type="text" name="productStock"id="productStock" placeholder="stock"><br>
-            <input type="submit" name="submit" id="submit" value="Add">
-          </form>
-        </div>
-        
-        <div class="row" id="deleteProduct">
-            <form id="order-lookup-form" action="adminHandler?action=deleteProduct" method="POST">
-            <label>Delete Product:</label>
-            <input type="text" name="ProductSku"id="deleteProduct" placeholder="sku number">
-            <input type="submit" name="submit" id="submit" value="Delete">
-          </form>
-        </div>
-        
-        <div class="row" id="admin-header">
-            <div class="col-sm-12">
-                <h1>Customers</h1>
-            </div>
-        </div>
-        
-        <div class="row" id="deleteCustomer">
-            <form id="order-lookup-form" action="adminHandler?action=deleteCustomer" method="POST">
-            <label>Delete Customer:</label>
-            <input type="text" name="customerId"id="deleteCustomer" placeholder="customer id">
-            <input type="submit" name="submit" id="submit" value="Delete">
-          </form>
-        </div>
-        
-        <div class="row" id="customerHistory">
-            <form id="order-lookup-form" action="adminHandler?action=customerHistory" method="POST">
-            <label>Customer History:</label>
-            <input type="text" name="customerId"id="customerHistory" placeholder="customer id">
-            <input type="submit" name="submit" id="submit" value="Search">
-          </form>            
-        </div>
-        
-        <div class="row" id="admin-header">
-            <div class="col-sm-12">
-                <h1>Administrators</h1>
-            </div>
-        </div>
-        
-        <div class="row" id="customerHistory">
-            <form id="order-lookup-form" action="adminHandler?action=addAdmin" method="POST">
-                <label>Add new Admin:</label><br>
-            <input type="text" name="adminId"id="customerHistory" placeholder="new Id"><br>
-            <input type="text" name="fName"id="customerHistory" placeholder="First Name"><br>
-            <input type="text" name="lName"id="customerHistory" placeholder="Last Name"><br>
-            <input type="text" name="address"id="customerHistory" placeholder="Address"><br>
-            <input type="text" name="password"id="customerHistory" placeholder="Password"><br>
-            <input type="submit" name="submit" id="submit" value="Add">
-          </form>            
-        </div>
-        
-        <div class="row" id="customerHistory">
-            <form id="order-lookup-form" action="adminHandler?action=deleteAdmin" method="POST">
-            <label>Delete Admin:</label>
-            <input type="text" name="adminId"id="customerHistory" placeholder="adminId">
-            <input type="submit" name="submit" id="submit" value="Delete">
-          </form>            
-        </div>
-    </div>       
+        <h2 style="text-align: center">Product Info</h2>
+        <div class="row" id="productInfo">
+                
+            <table id="order-table">
+              <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>LeftInStock</th>              
+              </tr>
+
+              <tr>
+                  <th>${p1.getName()}</th>
+                  <th>${p1.getPrice()}</th>
+                  <th>${p1.getStock()}</th>
+              </tr>
+
+            </table>               
+        </div>              
     </body>
 </html>

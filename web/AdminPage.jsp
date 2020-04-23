@@ -4,7 +4,7 @@
     Edited on:April 16 2020 6:28pm
     Author     : Neal Valdez,Rachel Perry
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="businessObjs.Administrator"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

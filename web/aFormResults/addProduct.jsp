@@ -111,27 +111,7 @@
                     </div>
                 </nav>
         </div>
-        </div>
-        <div class="row" id="admin-header">
-            <div class="col-sm-12">
-                <h1>Orders</h1>
-            </div>
-        </div>
-        <div class="row" id="order-lookup">
-            <form id="order-lookup-form" action="adminHandler?action=orderLookup" method="POST">
-            <label>Look up Order:</label>
-            <input type="text" name="orderNum"id="lookupOrder" placeholder="order num">
-            <input type="submit" name="submit" id="submit" value="Lookup">
-          </form>
-        </div>   
-        
-        <div class="row" id="cancelOrder">
-            <form id="order-lookup-form" action="adminHandler?action=candelOrder" method="POST">
-            <label>Cancel Order:</label>
-            <input type="text" name="cancelOrder"id="cancelOrder" placeholder="order num">
-            <input type="submit" name="submit" id="submit" value="Cancel">
-          </form>
-        </div>
+        </div> 
         
         <div class="row" id="admin-header">
             <div class="col-sm-12">
@@ -139,82 +119,8 @@
             </div>
         </div>
         
-        <div class="row" id="Product">
-            <form id="order-lookup-form" action="adminHandler?action=productInfo" method="POST">
-            <label>Product Info:</label>
-            <input type="text" name="productSku"id="productInfo" placeholder="sku number">
-            <input type="submit" name="submit" id="submit" value="Lookup">
-          </form>
-        </div>
+        <h2 style="text-align:center; font-size: 30px;">Product successfully added!</h2>
         
-        <div class="row" id="addProduct">
-            <form id="order-lookup-form" action="adminHandler?action=addProduct" method="POST">
-                <label>Add new Product:</label><br>
-            <input type="text" name="productSku"id="productSku" placeholder="number"><br>
-            <input type="text" name="productName"id="productName" placeholder="name"><br>
-            <input type="text" name="productPrice"id="productPrice" placeholder="price"><br>
-            <input type="text" name="productStock"id="productStock" placeholder="stock"><br>
-            <input type="submit" name="submit" id="submit" value="Add">
-          </form>
-        </div>
-        
-        <p style="text-align:center; font-size: 30px;">Product successfully added!</p>
-        
-        <div class="row" id="deleteProduct">
-            <form id="order-lookup-form" action="adminHandler?action=deleteProduct" method="POST">
-            <label>Delete Product:</label>
-            <input type="text" name="productSku"id="deleteProduct" placeholder="sku number">
-            <input type="submit" name="submit" id="submit" value="Delete">
-          </form>
-        </div>
-        
-        <div class="row" id="admin-header">
-            <div class="col-sm-12">
-                <h1>Customers</h1>
-            </div>
-        </div>
-        
-        <div class="row" id="deleteCustomer">
-            <form id="order-lookup-form" action="adminHandler?action=deleteCustomer" method="POST">
-            <label>Delete Customer:</label>
-            <input type="text" name="customerId"id="deleteCustomer" placeholder="customer id">
-            <input type="submit" name="submit" id="submit" value="Delete">
-          </form>
-        </div>
-        
-        <div class="row" id="customerHistory">
-            <form id="order-lookup-form" action="adminHandler?action=customerHistory" method="POST">
-            <label>Customer History:</label>
-            <input type="text" name="customerId"id="customerHistory" placeholder="customer id">
-            <input type="submit" name="submit" id="submit" value="Search">
-          </form>            
-        </div>
-        
-        <div class="row" id="admin-header">
-            <div class="col-sm-12">
-                <h1>Administrators</h1>
-            </div>
-        </div>
-        
-        <div class="row" id="customerHistory">
-            <form id="order-lookup-form" action="adminHandler?action=addAdmin" method="POST">
-                <label>Add new Admin:</label><br>
-            <input type="text" name="adminId"id="customerHistory" placeholder="new Id"><br>
-            <input type="text" name="fName"id="customerHistory" placeholder="First Name"><br>
-            <input type="text" name="lName"id="customerHistory" placeholder="Last Name"><br>
-            <input type="text" name="address"id="customerHistory" placeholder="Address"><br>
-            <input type="text" name="password"id="customerHistory" placeholder="Password"><br>
-            <input type="submit" name="submit" id="submit" value="Add">
-          </form>            
-        </div>
-        
-        <div class="row" id="customerHistory">
-            <form id="order-lookup-form" action="adminHandler?action=deleteAdmin" method="POST">
-            <label>Delete Admin:</label>
-            <input type="text" name="adminId"id="customerHistory" placeholder="adminId">
-            <input type="submit" name="submit" id="submit" value="Delete">
-          </form>            
-        </div>
-    </div>       
+               
     </body>
 </html>
