@@ -5,14 +5,6 @@
         <servlet-class>AdminLoginServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>createAcctServlet</servlet-name>
-        <servlet-class>createAcctServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>CustomerLoginServlet</servlet-name>
-        <servlet-class>CustomerLoginServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>adminHandler</servlet-name>
         <servlet-class>adminHandler</servlet-class>
     </servlet>
@@ -23,14 +15,6 @@
     <servlet-mapping>
         <servlet-name>AdminLoginServlet</servlet-name>
         <url-pattern>/AdminLoginServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>createAcctServlet</servlet-name>
-        <url-pattern>/createAcctServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>CustomerLoginServlet</servlet-name>
-        <url-pattern>/CustomerLoginServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>adminHandler</servlet-name>
