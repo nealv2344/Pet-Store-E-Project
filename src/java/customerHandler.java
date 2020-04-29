@@ -6,6 +6,7 @@
 
 import Data.Access;
 import businessObjs.Customer;
+import static businessObjs.Customer.getIdNum;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
@@ -65,12 +66,7 @@ public class customerHandler extends HttpServlet {
                 validate=rs.getString(6);
             }
             dbAccess.close();
-            if(validate.equals(pass)){
-                return true;
-            }
-            else{
-                return false;
-            }
+            return validate.equals(pass);
 
             
         }catch(Exception e){
@@ -124,11 +120,21 @@ public class customerHandler extends HttpServlet {
     protected void custSignUp(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-                //get inputs from html form
-                String id = "C007";
-                String newId = String.valueOf(Integer.parseInt(id)+1);
+                //Setting up auto-incrementing id
+                //an-alphanumeric
+                String an = "";
+                int count = getIdNum();
+                String idNum = Integer.toString(count);
+                
+                if(count<10){
+                    an = "C00";
+                }else if(10<=count){
+                    an = "C0";
+                }
+                String id = an+idNum;
+                
 
-                System.out.println(newId);
+                //get inputs from html form
                 String fname = request.getParameter("FirstName");
                 String lname = request.getParameter("LastName");
                 String email = request.getParameter("Email");
@@ -138,7 +144,7 @@ public class customerHandler extends HttpServlet {
                 //get objects from session if needed
 
                 //create new objects
-                Customer c1 = new Customer(newId,fname,lname,email,address,password,0);
+                Customer c1 = new Customer(id,fname,lname,email,address,password,0);
                 c1.insertDB();
                 //make any decisions
 
