@@ -8,7 +8,7 @@ public class Customer extends PersonObj {
     
     //Properties
     int cardInfo;
-    
+    OrderHistory orderHistory = new OrderHistory();
     //Constructors
     public Customer() {
         
@@ -19,9 +19,9 @@ public class Customer extends PersonObj {
     public Customer(String Id, String fname, String lname, String email, String address, String password,  int cardInfo) {
         
         //call super constructor
-        super(Id, fname, lname, email, address,password);
-        
+        super(Id, fname, lname, email, address,password);       
         this.cardInfo = cardInfo;
+        this.orderHistory.retrieveOrdersDB(Id);
         
     }     
 
@@ -33,6 +33,14 @@ public class Customer extends PersonObj {
     public void setCardInfo(int cardInfo) {
         this.cardInfo = cardInfo;
     }
+    
+    public OrderHistory getHistory(){
+        return orderHistory;
+    }
+    
+    public void setHistory(OrderHistory orderHistory){
+        this.orderHistory = orderHistory;
+    }
            
     //Database access methods
     //
@@ -43,7 +51,8 @@ public class Customer extends PersonObj {
             Access databaseAccess = new Access();
             
             //execute statment
-            String sql = "select * from Customers WHERE CustomerID = '" + ID + "'";             
+            String sql = "select * from Customers WHERE CustomerID = '" + ID + "'"; 
+            System.out.println(sql);            
             ResultSet result = databaseAccess.getStatement().executeQuery(sql);            
 
             result.next();
@@ -55,7 +64,10 @@ public class Customer extends PersonObj {
             setEmail(result.getString(7));
             setAddress(result.getString(4));
             setPw(result.getString(6));
-            setCardInfo(result.getInt(5));                        
+            setCardInfo(result.getInt(5));   
+            
+            
+            this.orderHistory.retrieveOrdersDB(ID);
             
             System.out.println("Customer " + ID + " Successfully selected" + System.lineSeparator());
             
@@ -159,52 +171,37 @@ public class Customer extends PersonObj {
         System.out.println("Address: "+getAddress());
         System.out.println("Password: "+getPw());
         System.out.println("CardInfo: "+getCardInfo());
+        this.orderHistory.display();
     }
     
     public static void main (String [] args){
         
 //        Customer c1 = new Customer();
-//        c1.selectDB("C002");
-//        c1.display();
-//        Customer c2 = new Customer("C200","Nela","Supp","nelaSup@gmail.com","123 william dr","pass123", 10276);
-//        c2.display();
-//        c2.insertDB();
+//        c1.selectDB("C003");
+//        c1.orderHistory.orders.forEach((o)->{
+//            System.out.println(o.getOrderNo());
+//            
+//            o.items.items.forEach((item)->{
+//                System.out.println(item.getName());
+//                System.out.println(item.getQuantity());
+//                System.out.println(item.getPrice());
+//            });
+//            System.out.println(o.getTotal());
+//        });
+        
 
-//          Customer c3 = new Customer();
-//          c3.selectDB("C006");
-//          c3.deleteDB();
-
-
-        //alphanumeric autoincrementing id
-//        String an="";
-//        int count = 44;
-//        //int idconverter = getRowCount();
-//        String num = Integer.toString(count);
-//        
-//        
-//        if(count<10){
-//            an = "C00";
-//        }else if(10<=count){
-//            an = "C0";
-//        }
-//        
-//        String id = an+num;
-//        System.out.println(id);
-//        
-//        getIdNum();
-
-            String an = "";
-            int count = getIdNum();
-
-            String idNum = Integer.toString(count);
-
-            if(count<10){
-                an="C00";
-            }else if(10<=count){
-                an="C0";
-            }
-            String id = an+idNum;
-            System.out.println(id);
+//            String an = "";
+//            int count = getIdNum();
+//
+//            String idNum = Integer.toString(count);
+//
+//            if(count<10){
+//                an="C00";
+//            }else if(10<=count){
+//                an="C0";
+//            }
+//            String id = an+idNum;
+//            System.out.println(id);
     }
 
 
