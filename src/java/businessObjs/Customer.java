@@ -127,6 +127,30 @@ public class Customer extends PersonObj {
         }
     }
     
+    //autogenerates id number
+    public static int getIdNum(){
+       
+        String test="";
+        try{
+                Access access = new Access();
+                String sql = "Select CustomerID From Customers Order By CustomerID desc";
+                
+                ResultSet rs = access.getStatement().executeQuery(sql);
+                
+                rs.next();
+                test = rs.getString(1);
+                
+                test = test.substring(1);
+                
+                int idNum = Integer.parseInt(test)+1;
+                
+        return idNum;        
+            
+        }catch(ClassNotFoundException | NumberFormatException | SQLException e){
+            return 1;
+        }
+    }
+    
     public void display(){
         System.out.println("ID: "+getId());
         System.out.println("FirstName: "+getFname());
@@ -146,10 +170,41 @@ public class Customer extends PersonObj {
 //        c2.display();
 //        c2.insertDB();
 
-          Customer c3 = new Customer();
-          c3.selectDB("C006");
-          c3.deleteDB();
-          
+//          Customer c3 = new Customer();
+//          c3.selectDB("C006");
+//          c3.deleteDB();
+
+
+        //alphanumeric autoincrementing id
+//        String an="";
+//        int count = 44;
+//        //int idconverter = getRowCount();
+//        String num = Integer.toString(count);
+//        
+//        
+//        if(count<10){
+//            an = "C00";
+//        }else if(10<=count){
+//            an = "C0";
+//        }
+//        
+//        String id = an+num;
+//        System.out.println(id);
+//        
+//        getIdNum();
+
+            String an = "";
+            int count = getIdNum();
+
+            String idNum = Integer.toString(count);
+
+            if(count<10){
+                an="C00";
+            }else if(10<=count){
+                an="C0";
+            }
+            String id = an+idNum;
+            System.out.println(id);
     }
 
 
